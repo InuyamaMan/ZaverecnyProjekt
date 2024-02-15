@@ -14,6 +14,7 @@ namespace ZaverecnyProjekt
 
             while (true)
             {
+                Console.WriteLine("\nCLIENT MANAGEMENT");
                 Console.WriteLine("1. Add new client");
                 Console.WriteLine("2. Find client");
                 Console.WriteLine("3. Delete client");

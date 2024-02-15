@@ -18,10 +18,13 @@ namespace ZaverecnyProjekt
             Console.Write("Enter client surname: ");
             string surname = Console.ReadLine();
 
-            Console.Write("Enter client birth date (yyyy-MM-dd): ");
-            DateTime birthDate = DateTime.Parse(Console.ReadLine());
+            Console.Write("Enter client age: ");
+            int age = int.Parse(Console.ReadLine());
 
-            clients.Add(new Client { Name = name, Surname = surname, BirthDate = birthDate });
+            Console.WriteLine("Enter client tel. number: ");
+            string telNumber = Console.ReadLine();
+
+            clients.Add(new Client { Name = name, Surname = surname, Age = age, TelNumber = telNumber });
             Console.WriteLine("Client added successfully.");
         }
 
@@ -29,7 +32,8 @@ namespace ZaverecnyProjekt
         {
             Console.WriteLine("1. Find by name");
             Console.WriteLine("2. Find by surname");
-            Console.WriteLine("3. Find by birth date");
+            Console.WriteLine("3. Find by age");
+            Console.WriteLine("4. Find by tel. number");
 
             Console.Write("Enter your choice: ");
             int choice = int.Parse(Console.ReadLine());
@@ -49,10 +53,16 @@ namespace ZaverecnyProjekt
                     PrintClients(bySurname);
                     break;
                 case 3:
-                    Console.Write("Enter client birth date (yyyy-MM-dd): ");
-                    DateTime birthDate = DateTime.Parse(Console.ReadLine());
-                    var byBirthDate = clients.FindAll(c => c.BirthDate.Date == birthDate.Date);
-                    PrintClients(byBirthDate);
+                    Console.Write("Enter client age: ");
+                    int age = int.Parse(Console.ReadLine());
+                    var byAge = clients.FindAll(c => c.Age == age);
+                    PrintClients(byAge);
+                    break;
+                case 4:
+                    Console.Write("Enter client Telephone Number: ");
+                    string telNumber = Console.ReadLine();
+                    var byTelNumber = clients.FindAll(c => c.TelNumber.Equals(telNumber, StringComparison.OrdinalIgnoreCase));
+                    PrintClients(byTelNumber);
                     break;
                 default:
                     Console.WriteLine("Invalid choice. Please try again.");
@@ -89,7 +99,7 @@ namespace ZaverecnyProjekt
         {
             foreach (var client in clientList)
             {
-                Console.WriteLine("Name: {0}, Surname: {1}, Birth Date: {2}", client.Name, client.Surname, client.BirthDate.ToString("yyyy-MM-dd"));
+                Console.WriteLine("\nName: {0}  Surname: {1} \nAge: {2}  Tel.Number: {3}", client.Name, client.Surname, client.Age, client.TelNumber);
             }
         }
     }
