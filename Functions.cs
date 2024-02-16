@@ -101,6 +101,7 @@ namespace ZaverecnyProjekt
                 Console.WriteLine("Client not found.");
         }
 
+        //Metoda pro výpis všech klientů v seznamu
         public void ShowAllClients()
         {
             if (clients.Count == 0)
@@ -114,6 +115,7 @@ namespace ZaverecnyProjekt
             }
         }
 
+        //Metoda vypisující klienty a veškeré informace k nim v seznamu přiřazené
         public void PrintClients(List<Client> clientList)
         {
             foreach (var client in clientList)
